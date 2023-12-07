@@ -63,6 +63,14 @@ namespace ProductProject.Repo.DatabaseUtility
             IEnumerable<Inventory> items=ProcessInventoryData(repo);
             ProcessProductData(repo,items);
             ProcessPriceData(repo);
+            deleteFiles();
+        }
+        private static void deleteFiles()
+        {
+            for (int i = 0; i < files.GetLength(0); i++)
+            {
+                File.Delete(files[i, (int)DataDetails.location]);
+            }
         }
         private static IEnumerable<Inventory> ProcessInventoryData(IProductRepo repo)
         {
